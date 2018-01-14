@@ -79,7 +79,7 @@ fi
 uuid=`$TASKBIN $1 uuids`
 
 # build full path & file name to store notes in
-file="$folder/$uuid.$EXT"
+file="$FOLDER/$uuid.$EXT"
 
 # determine if notes file already exists
 fileexists=0

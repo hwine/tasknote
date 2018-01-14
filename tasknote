@@ -45,6 +45,7 @@ VIEWER=cat
 # If you sync tasks, FOLDER should be a location that syncs and is available to
 # other computers, i.e. ~/dropbox/tasknotes
 FOLDER=`task _show | awk -F= '/data\.location/ {print $2}'`/notes
+FOLDER=`echo "$FOLDER" | sed "s|^~|$HOME|"`
 
 # Check for existence of $FOLDER
 if [ ! -d "$FOLDER" ]; then
@@ -78,7 +79,6 @@ fi
 uuid=`$TASKBIN $1 uuids`
 
 # build full path & file name to store notes in
-folder=`echo "$FOLDER" | sed "s|^~|$HOME|"`
 file="$folder/$uuid.$EXT"
 
 # determine if notes file already exists
